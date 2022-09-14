@@ -1,0 +1,2 @@
+C:\UnityP\CurveTry\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+C:\UnityP\CurveTry\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
