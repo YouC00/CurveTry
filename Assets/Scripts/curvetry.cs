@@ -8,7 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class curvetry : MonoBehaviour
 {
-    public UI Controller;
+    
     [SerializeField] GameObject leftOb;
     [SerializeField] GameObject rightOb;
     [SerializeField] GameObject GoalOb;
@@ -35,20 +35,7 @@ public class curvetry : MonoBehaviour
     // UI uL = new UI();
     // uL isminde tanımladığım UI classı ile oradaki variablelara müdehale edebildik.
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Goal")
-        {
-            Debug.Log("GOL");
-            Controller.ScorePlus();
-
-        }
-        else if (other.gameObject.tag == "KillZone")
-        {
-               SceneManager.LoadScene("SampleScene");
-
-        }
-
+    
         
 
        /* COMMENT
@@ -67,7 +54,7 @@ public class curvetry : MonoBehaviour
         // uL isminde tanımladığım UI classı ile oradaki variablelara müdehale edebildik.
 
         */
-    }
+    
 
     void Start()
     {
