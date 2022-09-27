@@ -29,14 +29,18 @@ public class UI : MonoBehaviour
     }
     void Start()
     {
-        StartTime = Time.time;
-        MatchActive = true;
-        ScoreText.text = "Score: " + PlayerPrefs.GetInt("ScoreKey").ToString();
-        TimeText.text = (PlayerPrefs.GetInt("LastTime") != MatchTime) ? PlayerPrefs.GetInt("LastTime").ToString() : MatchTime.ToString(); 
+        if (SceneManager.GetActiveScene().name == "Antreman")
+        {
+            StartTime = Time.time;
+            MatchActive = true;
+            ScoreText.text = "Score: " + PlayerPrefs.GetInt("ScoreKey").ToString();
+            TimeText.text = (PlayerPrefs.GetInt("LastTime") != MatchTime) ? PlayerPrefs.GetInt("LastTime").ToString() : MatchTime.ToString();
+        }
+
     }
     public void ScorePlus()
     {
-        if (MatchActive)
+        if (MatchActive && SceneManager.GetActiveScene().name == "Antreman")
         {
             Score = PlayerPrefs.GetInt("ScoreKey");
             Score++;
@@ -44,28 +48,62 @@ public class UI : MonoBehaviour
             ScoreText.text = "Score: " + Score.ToString();
         }
     }
+    public void ScorePlusWDirek()
+    {
+        if (MatchActive && SceneManager.GetActiveScene().name == "Antreman")
+        {
+            Score = PlayerPrefs.GetInt("ScoreKey");
+            Score = Score + 20;
+            PlayerPrefs.SetInt("ScoreKey", Score);
+            ScoreText.text = "Score: " + Score.ToString();
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
+        int count;
         if (other.gameObject.tag == "Goal")
         {
             Debug.Log("GOL");
             Controller.ScorePlus();
 
         }
+        else if (other.gameObject.tag == "direk")
+        {
+            Debug.Log("Direk!!");
+            Controller.ScorePlusWDirek();
+        }
         else if (other.gameObject.tag == "KillZone")
         {
             //PlayerPrefs.GetInt("ScoreKey");
             string seconds = TimeText.text.ToString();
             string[] secondsArr = seconds.Split(' ');
-            lastTime = Convert.ToInt32(secondsArr[1]) ;
+            lastTime = Convert.ToInt32(secondsArr[1]);
             PlayerPrefs.SetInt("LastTime", lastTime);
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("Antreman");
+        }
+        
+    }
+
+    public void ScoreController(int count)
+    {
+
+        if (MatchActive && SceneManager.GetActiveScene().name == "Antreman")
+        {
+            Score = PlayerPrefs.GetInt("ScoreKey");
+            Score = Score + count;
+            PlayerPrefs.SetInt("ScoreKey", Score);
+            ScoreText.text = "Score: " + Score.ToString();
         }
     }
+
     // Update is called once per frame
     void Update()
     {
-        AktiveTime();
+        if (SceneManager.GetActiveScene().name == "Antreman")
+        {
+            AktiveTime();
+        }
+        
     }
 
     private void AktiveTime()
@@ -79,4 +117,5 @@ public class UI : MonoBehaviour
             MatchActive = false;
         }
     }
+    
 }

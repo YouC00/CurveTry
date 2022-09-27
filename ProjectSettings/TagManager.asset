@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Goal
   - KillZone
+  - direk
+  - ball
   layers:
   - Default
   - TransparentFX

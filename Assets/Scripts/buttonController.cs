@@ -11,6 +11,6 @@ public class buttonController : MonoBehaviour
     {
         PlayerPrefs.SetInt("ScoreKey",0);
         PlayerPrefs.SetInt("LastTime", UI.Instance.MatchTime);
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("Antreman");
     }
 }

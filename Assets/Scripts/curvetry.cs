@@ -32,7 +32,7 @@ public class curvetry : MonoBehaviour
     bool isLeftCurve;
     
     // uL isminde tanımladığım UI classı ile oradaki variablelara müdehale edebildik.
-    // UI uL = new UI();
+    // UI uL = new UI(); 
     // uL isminde tanımladığım UI classı ile oradaki variablelara müdehale edebildik.
 
     
@@ -55,7 +55,7 @@ public class curvetry : MonoBehaviour
 
         */
     
-
+   
     void Start()
     {
         //Score = 0;
@@ -102,7 +102,7 @@ public class curvetry : MonoBehaviour
 
         Vector3 throwDir = (startPos - endPos).normalized;//get throw direction based on start and end pos
 
-        this.gameObject.GetComponent<Rigidbody>().AddForce(throwDir * 5f * (startPos - endPos + tempV2).sqrMagnitude);//add force to throw direction*magnitude
+        this.gameObject.GetComponent<Rigidbody>().AddForce(throwDir * 6f * (startPos - endPos + tempV2).sqrMagnitude);//add force to throw direction*magnitude
 
         tempV1 = startPos;
         tempV2 = listPoints[(int)(listPoints.Count / 2)];
@@ -117,22 +117,23 @@ public class curvetry : MonoBehaviour
         if (isTimeActive)
         {
             StartCoroutine(HoldTime(1.0f));
-
-            GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(3f, transform.position.z), GoalOb.transform.position);
-            GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(7f, transform.position.y), PlaneOb.transform.position);
+            
+            //GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(3f, transform.position.z), GoalOb.transform.position);
+            //GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(7f, transform.position.y), PlaneOb.transform.position);
 
             if (tempV1.x < tempV2.x && tempV2.x > tempV3.x)
             {
-                GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(8f, transform.position.y), leftOb.transform.position);
+                GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(35f, transform.position.y), rightOb.transform.position);
                 
                 isLeftCurve = false;
             }
             else if (tempV1.x > tempV2.x && tempV2.x < tempV3.x)
             {
-                GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(- 8f, transform.position.y), rightOb.transform.position); 
+                GetComponent<Rigidbody>().AddForceAtPosition(new Vector3(-35f, transform.position.y), leftOb.transform.position); 
                
                 isLeftCurve = true;    
             } 
         }
+        
     }   
 }
