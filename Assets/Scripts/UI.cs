@@ -18,7 +18,7 @@ public class UI : MonoBehaviour
     private bool MatchActive = false;
     public UI Controller;
     int lastTime;
-
+    public curvetry c;
 
     public static UI Instance;
     // Start is called before the first frame update
@@ -81,7 +81,7 @@ public class UI : MonoBehaviour
             PlayerPrefs.SetInt("LastTime", lastTime);
             SceneManager.LoadScene("Antreman");
         }
-        
+        c.isTouch = false;
     }
 
     public void ScoreController(int count)
