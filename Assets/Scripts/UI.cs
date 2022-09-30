@@ -48,12 +48,12 @@ public class UI : MonoBehaviour
             ScoreText.text = "Score: " + Score.ToString();
         }
     }
-    public void ScorePlusWDirek()
+    public void ScoreMinus()
     {
         if (MatchActive && SceneManager.GetActiveScene().name == "Antreman")
         {
             Score = PlayerPrefs.GetInt("ScoreKey");
-            Score = Score + 20;
+            Score = Score - 10;
             PlayerPrefs.SetInt("ScoreKey", Score);
             ScoreText.text = "Score: " + Score.ToString();
         }
@@ -70,7 +70,7 @@ public class UI : MonoBehaviour
         else if (other.gameObject.tag == "direk")
         {
             Debug.Log("Direk!!");
-            Controller.ScorePlusWDirek();
+            Controller.ScoreMinus();
         }
         else if (other.gameObject.tag == "KillZone")
         {
